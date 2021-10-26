@@ -4,6 +4,7 @@
 #include <cmath>
 #include <cstdio>
 #include <cstring>
+#include <ctime>
 #include <deque>
 #include <functional>
 #include <iomanip>
@@ -36,23 +37,45 @@ typedef vector<vector<int>> vvi;
 typedef vector<ii> vii;
 typedef vector<string> vs;
 
+struct VHasher {
+    int operator()(const vector<int> &V) const {
+        int hash = V.size();
+        for (auto &x : V)
+            hash ^= x + (hash >> 3) + (x << 2);
+        return hash;
+    }
+};
+
+unordered_map<vector<int>, int, VHasher> m;
+vi v[(int)1e6 + 1];
+
+void precompute() {
+    for (int i = 2; i <= 1e6; ++i)
+        if (v[i].empty())
+            for (int j = i; j <= 1e6; j += i)
+                v[j].push_back(i);
+}
 
 int main() {
-    freopen("text.inp", "r", stdin);
-    //freopen("text.out", "w", stdout);
+    // freopen("text.inp", "r", stdin);
+    // freopen("text.out", "w", stdout);
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
 
-    int cnt = 0;
-    for (int i = 1; i <= 9; ++i)
-        cnt += 1;
-    for (int i = 10; i <= 99; ++i)
-        cnt += 2;
-    cnt += 3;
-    
-    cout << cnt << endl;
+    precompute();
 
-    
+    int n;
+    cin >> n;
+    while (n--) {
+        int a, b;
+        cin >> a >> b;
+        ll r = 0;
+        for (int i = a; i <= b; ++i)
+            r += m[v[i]]++;
+        cout << r << "\n";
+        m.clear();
+
+    }
     return 0;
 }

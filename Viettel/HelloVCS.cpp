@@ -37,22 +37,16 @@ typedef vector<ii> vii;
 typedef vector<string> vs;
 
 
+
 int main() {
-    freopen("text.inp", "r", stdin);
     //freopen("text.out", "w", stdout);
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
 
-    int cnt = 0;
-    for (int i = 1; i <= 9; ++i)
-        cnt += 1;
-    for (int i = 10; i <= 99; ++i)
-        cnt += 2;
-    cnt += 3;
-    
-    cout << cnt << endl;
-
+    string s;
+    cin >> s;
+    cout << "Hello " << s << "!";
     
     return 0;
 }

@@ -5,18 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "(Windows) C++ Launch",
-            "type": "cppvsdbg",
-            "request": "launch",
-            "program": "${workspaceFolder}/test.exe",
-            "args": [],
-            "stopAtEntry": true,
-            "cwd": "${fileDirname}",
-            "environment": [],
-            "console": "externalTerminal"
-        },
-        {
-            "name": "(gdb) Launch Linux",
+            "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/test",
